@@ -1,6 +1,6 @@
 package org.wit.domain
 
-data class UserDTO (
+data class UserDTO(
     var id: Int,
     var full_name: String,
     var phone_number: Long,
