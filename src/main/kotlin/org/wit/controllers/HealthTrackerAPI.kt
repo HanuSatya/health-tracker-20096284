@@ -26,7 +26,7 @@ object HealthTrackerAPI {
     }
 
     fun getUserByPhoneNumber(ctx: Context) {
-        val user = userDao.findByPhone(ctx.pathParam("phone").toLong())
+        val user = userDao.findByPhone(ctx.pathParam("phone"))
         if (user !=null) {
             ctx.json(user)
             ctx.status(200)
@@ -59,7 +59,18 @@ object HealthTrackerAPI {
     }
 
     fun getUserByGender(ctx: Context) {
-        val user = userDao.findByGender(ctx.pathParam("gender").getOrNull(0)?.uppercaseChar())
+        val user = ctx.pathParam("gender").getOrNull(0)?.let { userDao.findByGender(it.uppercaseChar()) }
+        if (user != null) {
+            ctx.json(user)
+            ctx.status(200)
+        }
+        else{
+            ctx.status(404)
+        }
+    }
+
+    fun getUserByAddress(ctx: Context) {
+        val user = userDao.findByAddress(ctx.pathParam("address"))
         if (user != null) {
             ctx.json(user)
             ctx.status(200)
