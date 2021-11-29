@@ -32,7 +32,7 @@ class JavalinConfig {
             get(   "/api/users/phone/:phone", HealthTrackerAPI::getUserByPhoneNumber)
             get(   "/api/users/email/:email", HealthTrackerAPI::getUserByEmail)
             get(   "/api/users/age/:age", HealthTrackerAPI::getUserByAge)
-            get(   "/api/users/gender/:gender", HealthTrackerAPI::getUserByGender)
+            get(   "/api/users/gender/:gender", HealthTrackerAPI::getUsersByGender)
             get(   "/api/users/address/:address", HealthTrackerAPI::getUserByAddress)
             post(  "/api/users", HealthTrackerAPI::addUser)
             delete("/api/users/:user-id", HealthTrackerAPI::deleteUser)
