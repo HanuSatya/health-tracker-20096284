@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.wit.repository.UserDAOTest" time="0.309" tests="19" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="org.wit.controllers.HealthTrackerAPITest" time="0.505" tests="1" errors="1" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="16"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -56,23 +56,28 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="60.0"/>
   </properties>
-  <testcase name="multiple users added to table can be retrieved successfully" classname="org.wit.repository.UserDAOTest$CreateUsers" time="0.032"/>
-  <testcase name="get user by age that doesn&apos;t exist, results in no user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.021"/>
-  <testcase name="get user by age that exists, results in correct user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.017"/>
-  <testcase name="get user by id that doesn&apos;t exist, results in no user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.013"/>
-  <testcase name="get user by address that exists, results in correct user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.012"/>
-  <testcase name="get user by phone that doesn&apos;t exist, results in no user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.02"/>
-  <testcase name="get user by gender that doesn&apos;t exist, results in no user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.014"/>
-  <testcase name="get all users over empty table returns none" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.009"/>
-  <testcase name="get user by email that exists, results in correct user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.014"/>
-  <testcase name="get user by phone that exists, results in correct user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.011"/>
-  <testcase name="get user by address that doesn&apos;t exist, results in no user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.012"/>
-  <testcase name="get user by email that doesn&apos;t exist, results in no user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.021"/>
-  <testcase name="getting all users from a populated table returns all rows" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.011"/>
-  <testcase name="get user by id that exists, results in a correct user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.012"/>
-  <testcase name="get user by gender that exists, results in correct user returned" classname="org.wit.repository.UserDAOTest$ReadUsers" time="0.014"/>
-  <testcase name="updating existing user in table results in successful update" classname="org.wit.repository.UserDAOTest$UpdateUsers" time="0.014"/>
-  <testcase name="updating non-existant user in table results in no updates" classname="org.wit.repository.UserDAOTest$UpdateUsers" time="0.011"/>
-  <testcase name="deleting a non-existent user in table results in no deletion" classname="org.wit.repository.UserDAOTest$DeleteUsers" time="0.015"/>
-  <testcase name="deleting an existing user in table results in record being deleted" classname="org.wit.repository.UserDAOTest$DeleteUsers" time="0.012"/>
+  <testcase name="org.wit.controllers.HealthTrackerAPITest" classname="org.wit.controllers.HealthTrackerAPITest" time="0.503">
+    <error message="Port already in use. Make sure no other process is using port 7000 and try again." type="java.lang.RuntimeException"><![CDATA[java.lang.RuntimeException: Port already in use. Make sure no other process is using port 7000 and try again.
+	at org.wit.controllers.HealthTrackerAPITest.<init>(HealthTrackerAPITest.kt:14)
+Caused by: java.io.IOException: Failed to bind to 0.0.0.0/0.0.0.0:7000
+	at org.wit.controllers.HealthTrackerAPITest.<init>(HealthTrackerAPITest.kt:14)
+Caused by: java.net.BindException: Address already in use: bind
+	at org.wit.controllers.HealthTrackerAPITest.<init>(HealthTrackerAPITest.kt:14)
+]]></error>
+    <system-err><![CDATA[[main] INFO io.javalin.Javalin - 
+           __                      __ _
+          / /____ _ _   __ ____ _ / /(_)____
+     __  / // __ `/| | / // __ `// // // __ \
+    / /_/ // /_/ / | |/ // /_/ // // // / / /
+    \____/ \__,_/  |___/ \__,_//_//_//_/ /_/
+
+        https://javalin.io/documentation
+
+[main] INFO org.eclipse.jetty.util.log - Logging initialized @995ms to org.eclipse.jetty.util.log.Slf4jLog
+[main] INFO io.javalin.Javalin - Starting Javalin ...
+[main] ERROR io.javalin.Javalin - Failed to start Javalin
+[main] INFO io.javalin.Javalin - Stopping Javalin ...
+[main] INFO io.javalin.Javalin - Javalin has stopped
+]]></system-err>
+  </testcase>
 </testsuite>
