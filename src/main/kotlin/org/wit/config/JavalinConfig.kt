@@ -35,11 +35,17 @@ class JavalinConfig {
             get(   "/api/users/gender/:gender", HealthTrackerAPI::getUsersByGender)
             get(   "/api/users/address/:address", HealthTrackerAPI::getUserByAddress)
             get("/api/users/:user-id/activities", HealthTrackerAPI::getActivitiesByUserId)
-            get("/api/activities", HealthTrackerAPI::getAllActivities)
-            post("/api/activities", HealthTrackerAPI::addActivity)
             post(  "/api/users", HealthTrackerAPI::addUser)
             delete("/api/users/:user-id", HealthTrackerAPI::deleteUser)
+            delete("/api/users/:user-id/activities", HealthTrackerAPI::deleteActivityByUserId)
             patch( "/api/users/:user-id", HealthTrackerAPI::updateUser)
+
+            //ACTIVITIES - API CRUD
+            get(   "/api/activities", HealthTrackerAPI::getAllActivities)
+            get(   "/api/activities/:activity-id", HealthTrackerAPI::getActivitiesByActivityId)
+            post(  "/api/activities", HealthTrackerAPI::addActivity)
+            delete("/api/activities/:activity-id", HealthTrackerAPI::deleteActivityByActivityId)
+            patch( "/api/activities/:activity-id", HealthTrackerAPI::updateActivity)
         }
     }
 
