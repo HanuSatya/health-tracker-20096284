@@ -1,12 +1,15 @@
 package org.wit.controllers
 
-
+import com.fasterxml.jackson.databind.SerializationFeature
+import com.fasterxml.jackson.datatype.joda.JodaModule
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.fasterxml.jackson.module.kotlin.readValue
 import io.javalin.http.Context
 import org.wit.repository.UserDAO
 import org.wit.repository.ActivityDAO
 import org.wit.domain.UserDTO
 import org.wit.domain.ActivityDTO
-import org.wit.utilities.jsonToObject
+
 
 
 object HealthTrackerAPI {
@@ -14,17 +17,12 @@ object HealthTrackerAPI {
     private val userDao = UserDAO()
     private val activityDAO = ActivityDAO()
 
-    //userDAO
+
+               //userDAO//
+
 
     fun getAllUsers(ctx: Context) {
-        val users = userDao.getAll()
-        if (users.size != 0) {
-            ctx.status(200)
-        }
-        else{
-            ctx.status(404)
-        }
-        ctx.json(users)
+        ctx.json(userDao.getAll())
     }
 
     fun getUserByUserId(ctx: Context)
@@ -32,10 +30,6 @@ object HealthTrackerAPI {
         val user = userDao.findById(ctx.pathParam("user-id").toInt())
         if (user != null) {
             ctx.json(user)
-            ctx.status(200)
-        }
-        else{
-            ctx.status(404)
         }
     }
 
@@ -44,10 +38,6 @@ object HealthTrackerAPI {
         val user = userDao.findByPhone(ctx.pathParam("phone"))
         if (user !=null) {
             ctx.json(user)
-            ctx.status(200)
-        }
-        else{
-            ctx.status(404)
         }
     }
 
@@ -56,10 +46,7 @@ object HealthTrackerAPI {
         val user = userDao.findByEmail(ctx.pathParam("email"))
         if (user != null) {
             ctx.json(user)
-            ctx.status(200)
-        }
-        else{
-            ctx.status(404)
+
         }
     }
 
@@ -68,10 +55,6 @@ object HealthTrackerAPI {
         val user = userDao.findByAge(ctx.pathParam("age").toInt())
         if (user != null) {
             ctx.json(user)
-            ctx.status(200)
-        }
-        else{
-            ctx.status(404)
         }
     }
 
@@ -80,10 +63,6 @@ object HealthTrackerAPI {
         val user =  userDao.findByGender(ctx.pathParam("gender"))
         if (user != null) {
             ctx.json(user)
-        ctx.status(200)
-    }
-    else{
-        ctx.status(404)
     }
 }
 
@@ -92,39 +71,32 @@ object HealthTrackerAPI {
         val user = userDao.findByAddress(ctx.pathParam("address"))
         if (user != null) {
             ctx.json(user)
-            ctx.status(200)
-        }
-        else{
-            ctx.status(404)
+
         }
     }
 
     fun addUser(ctx: Context)
     {
-        val user : UserDTO = jsonToObject(ctx.body())
+        val mapper = jacksonObjectMapper()
+        val user = mapper.readValue<UserDTO>(ctx.body())
         val userId = userDao.save(user)
-        if (userId != null) {
-            user.id = userId
+
             ctx.json(user)
-            ctx.status(201)
+
         }
-    }
 
     fun deleteUser(ctx: Context)
     {
-        if (userDao.delete(ctx.pathParam("user-id").toInt()) != 0)
-            ctx.status(204)
-        else
-            ctx.status(404)
+        userDao.delete(ctx.pathParam("user-id").toInt())
 
     }
 
     fun updateUser(ctx: Context){
-        val user : UserDTO = jsonToObject(ctx.body())
-        if ((userDao.update(id = ctx.pathParam("user-id").toInt(), userDTO=user)) != 0)
-            ctx.status(204)
-        else
-            ctx.status(404)
+        val mapper = jacksonObjectMapper()
+        val user = mapper.readValue<UserDTO>(ctx.body())
+        userDao.update(
+            id = ctx.pathParam("user-id").toInt(),
+            userDTO=user)
     }
 
 
@@ -143,28 +115,17 @@ ActivityDAO
         val activities = activityDAO.findByUserId(ctx.pathParam("user-id").toInt())
         if (activities.size > 0)
             ctx.json(activities)
-        ctx.status(200)
-    }
-    else{
-        ctx.status(404)
        }
     }
 
     fun addActivity(ctx: Context)
     {
-        val activityDTO : ActivityDTO = jsonToObject(ctx.body())
-        val userId = userDao.findById(activityDTO.userId)
-        if (userId != null) {
-            val activityId = activityDAO.save(activityDTO)
-            if (activityId != null) {
-                activityDTO.id = activityId
-                ctx.json(activityDTO)
-                ctx.status(200)
-            }
-        }
-        else{
-            ctx.status(404)
-        }
+        val mapper = jacksonObjectMapper()
+            .registerModule(JodaModule())
+            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        val activity = mapper.readValue<ActivityDTO>(ctx.body())
+        activityDAO.save(activity)
+        ctx.json(activity)
     }
 
 
@@ -172,41 +133,29 @@ ActivityDAO
     val activity = activityDAO.findByActivityId((ctx.pathParam("activity-id").toInt()))
     if (activity != null){
         ctx.json(activity)
-        ctx.status(200)
-        }
-    else{
-        ctx.status(404)
     }
     }
 
 
     fun deleteActivityByActivityId(ctx: Context){
-        if (activityDAO.deleteByActivityId(ctx.pathParam("activity-id").toInt()) != 0)
-            ctx.status(204)
-        else
-            ctx.status(404)
+        activityDAO.deleteByActivityId(ctx.pathParam("activity-id").toInt())
     }
 
 
     fun deleteActivityByUserId(ctx: Context){
-        if (activityDAO.deleteByUserId(ctx.pathParam("user-id").toInt()) != 0)
-            ctx.status(204)
-        else
-            ctx.status(404)
+        activityDAO.deleteByUserId(ctx.pathParam("user-id").toInt())
     }
 
 
     fun updateActivity(ctx: Context){
-        val activity : ActivityDTO = jsonToObject(ctx.body())
-        if (activityDAO.updateByActivityId(
-                activityId = ctx.pathParam("activity-id").toInt(),
-                activityDTO=activity) != 0)
-            ctx.status(204)
-        else
-            ctx.status(404)
+        val mapper = jacksonObjectMapper()
+            .registerModule(JodaModule())
+            .configure(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS, false)
+        val activity = mapper.readValue<ActivityDTO>(ctx.body())
+        activityDAO.updateByActivityId(
+            activityId = ctx.pathParam("activity-id").toInt(),
+            activityDTO=activity)
     }
-
-
 }
 
 

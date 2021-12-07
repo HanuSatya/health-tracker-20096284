@@ -8,23 +8,17 @@ import org.wit.domain.ActivityDTO
 import org.wit.domain.UserDTO
 import org.wit.repository.*
 
-val nonExistingPhone ="xxxxxxxxxx"
+val nonExistingPhone ="7711xxxxxx"
 val nonExistingEmail = "112233445566778testUser@xxxxx.xx"
 val nonExistingAge = 0
 val nonExistingGender = "otherxxx"
-val nonExistingAddress = "xxxxxxxxx"
+val nonExistingAddress = "Dubxxxxxx"
 val validName = "Test User 1"
-val validPhone = "Test User XXXXXX"
+val validPhone = "Test User Ph.No"
 val validEmail = "testuser1@test.com"
 val validAge = 0
-val validGender ="Test User X"
+val validGender ="Test User Gender"
 val validAddress = "Test Users address"
-val updatedName = "Updated Name"
-val updatedPhone = "Updated Phone"
-val updatedEmail = "Updated Email"
-val updatedAge = "Updated Age"
-val updatedGender = "Updated Gender"
-val updatedAddress = "Updated Address"
 
 
 val users = arrayListOf<UserDTO>(

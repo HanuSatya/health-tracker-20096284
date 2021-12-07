@@ -82,7 +82,7 @@ class UserDAO {
         }
     }
 
-    fun save(userDTO: UserDTO): Int?
+    fun save(userDTO: UserDTO)
     {
         return transaction {
             Users.insert {
@@ -92,7 +92,7 @@ class UserDAO {
                 it[age] = userDTO.age
                 it[gender] = userDTO.gender
                 it[address] = userDTO.address
-            } get Users.id
+            }
         }
     }
 

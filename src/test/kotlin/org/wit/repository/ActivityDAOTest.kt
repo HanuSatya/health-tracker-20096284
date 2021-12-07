@@ -42,6 +42,7 @@ class ActivityDAOTest {
                 //Arrange - create and populate tables with six users and six activities
                 val userDAO = populateUserTable()
                 val activityDAO = populateActivityTable()
+
                 //Act & Assert
                 assertEquals(6, activityDAO.getAll().size)
                 assertEquals(activity1, activityDAO.findByActivityId(activity1.id))
@@ -63,6 +64,7 @@ class ActivityDAOTest {
                 //Arrange - create and populate tables with six users and six activities
                 val userDAO = populateUserTable()
                 val activityDAO = populateActivityTable()
+
                 //Act & Assert
                 assertEquals(6, activityDAO.getAll().size)
             }
@@ -74,6 +76,7 @@ class ActivityDAOTest {
                 //Arrange - create and populate tables with six users and six activities
                 val userDAO = populateUserTable()
                 val activityDAO = populateActivityTable()
+
                 //Act & Assert
                 assertEquals(0, activityDAO.findByUserId(6).size)
             }
@@ -85,6 +88,7 @@ class ActivityDAOTest {
                 //Arrange - create and populate tables with six users and six activities
                 val userDAO = populateUserTable()
                 val activityDAO = populateActivityTable()
+
                 //Act & Assert
                 assertEquals(activity1, activityDAO.findByUserId(1).get(0))
                 assertEquals(activity2, activityDAO.findByUserId(2).get(0))
