@@ -9,7 +9,7 @@ import org.wit.repository.UserDAO
 import org.wit.repository.ActivityDAO
 import org.wit.domain.UserDTO
 import org.wit.domain.ActivityDTO
-
+import org.wit.domain.BMIResponseDTO
 
 
 object HealthTrackerAPI {
@@ -155,6 +155,17 @@ ActivityDAO
         activityDAO.updateByActivityId(
             activityId = ctx.pathParam("activity-id").toInt(),
             activityDTO=activity)
+    }
+
+    fun getBMI(ctx:Context){
+        var height:Double = ctx.pathParam("height").toDouble()
+        var weight:Double = ctx.pathParam("weight").toDouble()
+
+        var bmi = (weight)/(height*height)
+
+        var bmiobj = BMIResponseDTO(bmi)
+
+        ctx.json(bmiobj)
     }
 }
 

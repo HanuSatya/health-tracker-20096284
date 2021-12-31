@@ -28,6 +28,7 @@ class JavalinConfig {
     private fun registerRoutes(app: Javalin){
         app.routes {
             get(   "/api/users", HealthTrackerAPI::getAllUsers)
+            post(  "/api/users", HealthTrackerAPI::addUser)
             get(   "/api/users/:user-id", HealthTrackerAPI::getUserByUserId)
             get(   "/api/users/phone/:phone", HealthTrackerAPI::getUserByPhoneNumber)
             get(   "/api/users/email/:email", HealthTrackerAPI::getUserByEmail)
@@ -35,7 +36,6 @@ class JavalinConfig {
             get(   "/api/users/gender/:gender", HealthTrackerAPI::getUsersByGender)
             get(   "/api/users/address/:address", HealthTrackerAPI::getUserByAddress)
             get("/api/users/:user-id/activities", HealthTrackerAPI::getActivitiesByUserId)
-            post(  "/api/users", HealthTrackerAPI::addUser)
             delete("/api/users/:user-id", HealthTrackerAPI::deleteUser)
             delete("/api/users/:user-id/activities", HealthTrackerAPI::deleteActivityByUserId)
             patch( "/api/users/:user-id", HealthTrackerAPI::updateUser)
@@ -46,6 +46,12 @@ class JavalinConfig {
             post(  "/api/activities", HealthTrackerAPI::addActivity)
             delete("/api/activities/:activity-id", HealthTrackerAPI::deleteActivityByActivityId)
             patch( "/api/activities/:activity-id", HealthTrackerAPI::updateActivity)
+
+            // BMI api
+
+            get(   "/api/users/:height/:weight", HealthTrackerAPI::getBMI)
+
+
         }
     }
 
