@@ -1,0 +1,94 @@
+-------------------------------------------------------------------------------
+Test set: org.wit.controllers.HealthTrackerAPITest
+-------------------------------------------------------------------------------
+Tests run: 24, Failures: 11, Errors: 11, Skipped: 0, Time elapsed: 16.407 s <<< FAILURE! - in org.wit.controllers.HealthTrackerAPITest
+add a user with correct details returns a 201 response  Time elapsed: 1.496 s  <<< FAILURE!
+java.lang.AssertionError: expected:<201> but was:<500>
+	at org.wit.controllers.HealthTrackerAPITest$CreateUsers.add a user with correct details returns a 201 response(HealthTrackerAPITest.kt:47)
+
+get user by id when user does not exist returns 404 response  Time elapsed: 1.085 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$ReadUsers.get user by id when user does not exist returns 404 response(HealthTrackerAPITest.kt:86)
+
+getting a user by email when email exists, returns a 200 response  Time elapsed: 1.082 s  <<< ERROR!
+com.fasterxml.jackson.databind.exc.MismatchedInputException: 
+No content to map due to end-of-input
+ at [Source: (String)""; line: 1, column: 0]
+	at org.wit.controllers.HealthTrackerAPITest$ReadUsers.getting a user by email when email exists, returns a 200 response(HealthTrackerAPITest.kt:524)
+
+getting a user by id when id exists, returns a 200 response  Time elapsed: 0.029 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$ReadUsers.getting a user by id when id exists, returns a 200 response(HealthTrackerAPITest.kt:102)
+
+get user by email when user does not exist returns 404 response  Time elapsed: 1.077 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$ReadUsers.get user by email when user does not exist returns 404 response(HealthTrackerAPITest.kt:94)
+
+updating a user when it exists, returns a 204 response  Time elapsed: 0.04 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$UpdateUsers.updating a user when it exists, returns a 204 response(HealthTrackerAPITest.kt:135)
+
+updating a user when it doesn't exist, returns a 404 response  Time elapsed: 0.019 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<500>
+	at org.wit.controllers.HealthTrackerAPITest$UpdateUsers.updating a user when it doesn't exist, returns a 404 response(HealthTrackerAPITest.kt:154)
+
+deleting a user when it doesn't exist, returns a 404 response  Time elapsed: 1.039 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$DeleteUsers.deleting a user when it doesn't exist, returns a 404 response(HealthTrackerAPITest.kt:163)
+
+deleting a user when it exists, returns a 204 response  Time elapsed: 0.023 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$DeleteUsers.deleting a user when it exists, returns a 204 response(HealthTrackerAPITest.kt:171)
+
+add an activity when no user exists for it, returns a 404 response  Time elapsed: 1.056 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$CreateActivities.add an activity when no user exists for it, returns a 404 response(HealthTrackerAPITest.kt:207)
+
+add an activity when a user exists for it, returns a 201 response  Time elapsed: 0.029 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$CreateActivities.add an activity when a user exists for it, returns a 201 response(HealthTrackerAPITest.kt:190)
+
+get all activities by user id when no user exists returns 404 response  Time elapsed: 1.029 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$ReadActivities.get all activities by user id when no user exists returns 404 response(HealthTrackerAPITest.kt:275)
+
+get activity by activity id when no activity exists returns 404 response  Time elapsed: 1.057 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$ReadActivities.get activity by activity id when no activity exists returns 404 response(HealthTrackerAPITest.kt:284)
+
+get all activities by user id when no activities exist returns 404 response  Time elapsed: 0.031 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$ReadActivities.get all activities by user id when no activities exist returns 404 response(HealthTrackerAPITest.kt:258)
+
+get all activities by user id when user and activities exists returns 200 response  Time elapsed: 0.022 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$ReadActivities.get all activities by user id when user and activities exists returns 200 response(HealthTrackerAPITest.kt:237)
+
+get activity by activity id when activity exists returns 200 response  Time elapsed: 0.021 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$ReadActivities.get activity by activity id when activity exists returns 200 response(HealthTrackerAPITest.kt:291)
+
+updating an activity by activity id when it exists, returns 204 response  Time elapsed: 0.038 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$UpdateActivities.updating an activity by activity id when it exists, returns 204 response(HealthTrackerAPITest.kt:328)
+
+updating an activity by activity id when it doesn't exist, returns a 404 response  Time elapsed: 1.008 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$UpdateActivities.updating an activity by activity id when it doesn't exist, returns a 404 response(HealthTrackerAPITest.kt:317)
+
+deleting an activity by activity id when it doesn't exist, returns a 404 response  Time elapsed: 1.08 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$DeleteActivities.deleting an activity by activity id when it doesn't exist, returns a 404 response(HealthTrackerAPITest.kt:361)
+
+deleting all activities by userid when it exists, returns a 204 response  Time elapsed: 0.032 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$DeleteActivities.deleting all activities by userid when it exists, returns a 204 response(HealthTrackerAPITest.kt:391)
+
+deleting activities by user id when it doesn't exist, returns a 404 response  Time elapsed: 1.041 s  <<< FAILURE!
+java.lang.AssertionError: expected:<404> but was:<200>
+	at org.wit.controllers.HealthTrackerAPITest$DeleteActivities.deleting activities by user id when it doesn't exist, returns a 404 response(HealthTrackerAPITest.kt:367)
+
+deleting an activity by id when it exists, returns a 204 response  Time elapsed: 0.03 s  <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "kong.unirest.JsonNode.toString()" because the return value of "kong.unirest.HttpResponse.getBody()" is null
+	at org.wit.controllers.HealthTrackerAPITest$DeleteActivities.deleting an activity by id when it exists, returns a 204 response(HealthTrackerAPITest.kt:374)
+
