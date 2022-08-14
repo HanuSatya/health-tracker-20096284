@@ -35,19 +35,19 @@
             <div class="input-group-prepend">
               <span class="input-group-text" id="input-user-name">Name</span>
             </div>
-            <input type="text" class="form-control" v-model="user.name" name="name" placeholder="Name"/>
+            <input type="text" class="form-control" v-model="user.full_name" name="name" placeholder="Name"/>
           </div>
           <div class="input-group mb-3">
           <div class="input-group-prepend">
             <span class="input-group-text" id="input-user-phone">Phone</span>
           </div>
-          <input type="number" class="form-control" v-model="user.phone" name="phone" placeholder="Phone"/>
+          <input type="number" class="form-control" v-model="user.phone_number" name="phone" placeholder="Phone"/>
       </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
               <span class="input-group-text" id="input-user-email">Email</span>
             </div>
-            <input type="email" class="form-control" v-model="user.email" name="email" placeholder="Email"/>
+            <input type="email" class="form-control" v-model="user.email_id" name="email" placeholder="Email"/>
           </div>
           <div class="input-group mb-3">
             <div class="input-group-prepend">
