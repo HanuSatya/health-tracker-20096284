@@ -21,7 +21,7 @@ class JavalinConfig {
         val herokuPort = System.getenv("PORT")
         return if (herokuPort != null) {
             Integer.parseInt(herokuPort)
-        } else 7000
+        } else 3000
     }
 
 
@@ -59,6 +59,8 @@ class JavalinConfig {
 
             get("/activities", VueComponent("<activity-overview></activity-overview>"))
             get("/activities/:activity-id", VueComponent("<activity-profile></activity-profile>"))
+
+            get("/bmi", VueComponent("<user-bmi></user-bmi>"))
         }
     }
 

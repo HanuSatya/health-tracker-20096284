@@ -62,22 +62,19 @@
     </div>
 
     <!-- List Group - displays all the users -->
-    <div class="list-group list-group-flush">
+    <div class="grid">
       <div class="list-group-item d-flex align-items-start"
            v-for="(user,index) in users" v-bind:key="index">
-        <div class="mr-auto p-2">
-          <span><a :href="`/users/${user.id}`"> {{ user.name }} ({{ user.email }}) {{user.phone}} {{user.age}} {{user.gender}} {{user.address}} </a></span>
-        </div>
-        <div class="p2">
-          <a :href="`/users/${user.id}`">
-            <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-          </a>
-          <button rel="tooltip" title="Delete" class="btn btn-info btn-simple btn-link"
-                  @click="deleteUser(user, index)">
-            <i class="fas fa-trash" aria-hidden="true"></i>
-          </button>
+
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ user.full_name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">{{ user.phone_number }}</h6>
+            <p class="card-subtitle mb-2 text-muted">{{ user.email_id }}</p>
+            <p class="card-text">Address: {{ user.address }}</p>
+            <a @click="deleteUser(user, index)"  class="btn btn-outline-danger">Delete</a>
+            <a :href="`/users/${user.id}`" class="btn btn-primary">Edit</a>
+          </div>
         </div>
       </div>
     </div>
@@ -133,3 +130,10 @@ Vue.component("user-overview", {
   }
 });
 </script>
+
+<style scoped>
+  .grid{
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+</style>

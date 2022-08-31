@@ -55,22 +55,18 @@
     </div>
 
     <!-- List Group - displays all the activities -->
-    <div class="list-group list-group-flush">
+    <div class="grid">
       <div class="list-group-item d-flex align-items-start"
            v-for="(activity,index) in activities" v-bind:key="index">
-        <div class="mr-auto p-2">
-          <span><a :href="`/activities/${activity.id}`"> {{ activity.description }} ({{ activity.duration }}) {{activity.calories}} {{activity.started}} {{activity.userId}} </a></span>
-        </div>
-        <div class="p2">
-          <a :href="`/activities/${activity.id}`">
-            <button rel="tooltip" title="Update" class="btn btn-info btn-simple btn-link">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
-            </button>
-          </a>
-          <button rel="tooltip" title="Delete" class="btn btn-info btn-simple btn-link"
-                  @click="deleteActivity(activity, index)">
-            <i class="fas fa-trash" aria-hidden="true"></i>
-          </button>
+        <div class="card" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">{{ activity.description }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Calories Burned: {{ activity.calories }}</h6>
+            <p class="card-subtitle mb-2 text-muted">Activity Duration: {{ activity.duration }}</p>
+            <p class="card-text">Stared: {{ activity.started.year }}</p>
+            <a  @click="deleteActivity(activity, index)"  class="btn btn-outline-danger">Delete</a>
+            <a :href="`/activities/${activity.id}`" class="btn btn-primary">Edit</a>
+          </div>
         </div>
       </div>
     </div>
@@ -91,7 +87,9 @@ Vue.component("activity-overview", {
   methods: {
     fetchActivities: function () {
       axios.get("/api/activities")
-          .then(res => this.activities = res.data)
+          .then(res => {
+            this.activities = res.data
+          })
           .catch(() => alert("Error while fetching activities"));
     },
     deleteActivity: function (activity, index) {
@@ -129,3 +127,10 @@ Vue.component("activity-overview", {
   }
 });
 </script>
+
+<style scoped>
+.grid{
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+</style>
