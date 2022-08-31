@@ -37,7 +37,7 @@ However, this general guideline varies slightly by age group:
 
 
 ## Reference for the above data:
-(https://healthyeating.sfgate.com/typical-calories-burned-sedentary-lifestyle-5270.html)[https://healthyeating.sfgate.com/typical-calories-burned-sedentary-lifestyle-5270.html]
+https://healthyeating.sfgate.com/typical-calories-burned-sedentary-lifestyle-5270.html
 
 ## Tech
 
