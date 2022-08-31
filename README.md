@@ -1,7 +1,6 @@
  # **HealthTrackerAppRest**
 
 
-
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 
@@ -67,4 +66,5 @@ Followed as per the assignment and labs.
 For production release:
 - Used javalin-maven in IDE to build and depoly the the code from local to heroku.
 - Tested by creating user online
+
 

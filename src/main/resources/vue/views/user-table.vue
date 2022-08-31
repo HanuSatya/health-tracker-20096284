@@ -10,7 +10,7 @@
       </thead>
       <tbody>
       <tr v-for="(user, index) in healthy">
-        <th scope="row">1</th>
+        <th scope="row">{{ index+1 }}</th>
         <td>{{ user.full_name }}</td>
         <td>{{ unhealthy[index]?unhealthy[index].full_name:"----" }}</td>
       </tr>
