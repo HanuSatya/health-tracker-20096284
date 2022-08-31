@@ -34,7 +34,10 @@ Vue.component('home-page',
       }),
       created() {
         axios.get("/api/users")
-            .then(res => this.users = res.data)
+            .then(res => {
+              console.log(res)
+              this.users = res.data
+            })
             .catch(() => alert("Error while fetching users"));
         axios.get("/api/activities")
             .then(res => this.activities = res.data)
