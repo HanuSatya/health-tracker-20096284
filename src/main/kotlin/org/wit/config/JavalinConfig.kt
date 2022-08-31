@@ -61,6 +61,7 @@ class JavalinConfig {
             get("/activities/:activity-id", VueComponent("<activity-profile></activity-profile>"))
 
             get("/bmi", VueComponent("<user-bmi></user-bmi>"))
+            get("/table", VueComponent("<user-table></user-table>"))
         }
     }
 
