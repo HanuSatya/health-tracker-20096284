@@ -1,6 +1,6 @@
 <template id="user-bmi">
   <app-layout>
-    <div class="grid">
+    <div class="grid2">
       <div class="list-group-item d-flex align-items-start"
            v-for="(user,index) in users" v-bind:key="index">
         <div class="mr-auto p-2 row">
@@ -65,8 +65,8 @@ Vue.component("user-bmi", {
           })
           if (activity) {
             const cal = this.getCalories(user.age)
-            let ishealthy = "unhealty";
-            if(cal-activity.calories<=1500) ishealthy = "healty"
+            let ishealthy = "unhealthy";
+            if(cal-activity.calories<=1500) ishealthy = "healthy"
             this.analysis.push(["Activity Found " + activity.description,
               "Calories Burned " + activity.calories,
               "Activity Duration " + activity.duration,
@@ -89,7 +89,7 @@ Vue.component("user-bmi", {
 </script>
 
 <style scoped>
-.grid{
+.grid2{
   display: grid;
   gap: 10px;
   grid-template-columns: auto auto;
