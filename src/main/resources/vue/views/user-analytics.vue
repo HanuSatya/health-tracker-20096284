@@ -1,4 +1,4 @@
-<template id="user-bmi">
+<template id="user-analytics">
   <app-layout>
     <div class="grid2">
       <div class="list-group-item d-flex align-items-start"
@@ -6,7 +6,7 @@
         <div class="mr-auto p-2 row">
           <div class="card col" style="width: 18rem;">
             <div class="card-body">
-              <h5 class="card-title">{{ user.full_name }}</h5>
+              <h5 class="card-title">{{ user.id+": "+user.full_name }}</h5>
               <h6 class="card-subtitle mb-2 text-muted">{{ user.phone_number }}</h6>
               <p class="card-subtitle mb-2 text-muted">{{ user.email_id }}</p>
               <p class="card-text">Address: {{ user.address }}</p>
@@ -14,7 +14,7 @@
           </div>
           <div class="col">
             <h6 class="bg-light p-2">Health Analysis</h6>
-            <div v-if="analysis[index]" v-for="(val, index) in analysis[index]" >
+            <div v-for="(val, index) in analysis[index]" >
               <p style="margin-bottom: 0">{{ val }}</p>
             </div>
           </div>
@@ -25,8 +25,8 @@
 </template>
 
 <script>
-Vue.component("user-bmi", {
-  template: "#user-bmi",
+Vue.component("user-analytics", {
+  template: "#user-analytics",
   data: () => ({
     users: [],
     activities: [],
@@ -73,6 +73,7 @@ Vue.component("user-bmi", {
               "Based on Analysis ",
               "You are currently "+ishealthy]);
           } else this.analysis.push(["No activities Found"])
+          console.log(this.analysis)
         })
       }
     },
