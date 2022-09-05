@@ -68,7 +68,7 @@
 
         <div class="card" style="width: 18rem;">
           <div class="card-body">
-            <h5 class="card-title">{{ user.full_name }}</h5>
+            <h5 class="card-title">{{ user.id+": "+user.full_name }}</h5>
             <h6 class="card-subtitle mb-2 text-muted">{{ user.phone_number }}</h6>
             <p class="card-subtitle mb-2 text-muted">{{ user.email_id }}</p>
             <p class="card-text">Address: {{ user.address }}</p>
@@ -114,12 +114,18 @@ Vue.component("user-overview", {
     },
     addUser: function (){
       const url = `/api/users`;
+      console.log('IN ADD')
       axios.post(url,
           {
-            name: this.formData.name,
-            email: this.formData.email
+            full_name: this.formData.name,
+            email_id: this.formData.email,
+            phone_number: this.formData.phone,
+            gender: this.formData.gender,
+            address: this.formData.address,
+            age: this.formData.age
           })
           .then(response => {
+            console.log('res', response)
             this.users.push(response.data)
             this.hideForm= true;
           })

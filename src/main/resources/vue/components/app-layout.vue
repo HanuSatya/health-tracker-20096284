@@ -21,7 +21,7 @@
               <a class="nav-link" href="/activities">Activities</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/bmi">User Analytics</a>
+              <a class="nav-link" href="/analytics">User Analytics</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/table">User Analytics Table</a>
