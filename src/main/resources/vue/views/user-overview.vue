@@ -114,7 +114,6 @@ Vue.component("user-overview", {
     },
     addUser: function (){
       const url = `/api/users`;
-      console.log('IN ADD')
       axios.post(url,
           {
             full_name: this.formData.name,
