@@ -66,7 +66,7 @@ Vue.component("app-layout", {
   }
   .active{
     color: rgb(255, 255, 255);
-    background-color: rgb(78, 78, 255);
+    background-color: #007bff;
     padding: 5px 20px;
     font-size: 20px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -75,7 +75,14 @@ Vue.component("app-layout", {
     margin: 0 10px;
     transition: all 0.3s ease;
   }
+  .active:hover{
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    scale: 1.05;
+    color: white !important;
+  }
   .a:hover{
-    color: rgb(78, 78, 255)
+    scale: 1.05;
+    color: #007bff;
+    text-decoration: none;
   }
 </style>

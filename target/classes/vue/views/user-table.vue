@@ -1,21 +1,23 @@
 <template id="user-table">
   <app-layout>
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Healthy</th>
-        <th scope="col">UnHealthy</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr v-for="(user, index) in unhealthy">
-        <th scope="row">{{ index+1 }}</th>
-        <td>{{ healthy[index]?healthy[index].id+": "+healthy[index].full_name:"----" }}</td>
-        <td>{{ unhealthy[index]?unhealthy[index].id+": "+unhealthy[index].full_name:"----" }}</td>
-      </tr>
-      </tbody>
-    </table>
+    <div class="card" style="padding: 20px; width: 50%;" >
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Healthy</th>
+          <th scope="col">UnHealthy</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr v-for="(user, index) in table">
+          <th scope="row">{{ index+1 }}</th>
+          <td>{{ user.healthy?getUserName(user.healthy.user_id):"----" }}</td>
+          <td>{{ user.unhealthy?getUserName(user.unhealthy.user_id):"----" }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </app-layout>
 </template>
 
@@ -23,58 +25,50 @@
 Vue.component("user-table", {
   template: "#user-table",
   data: () => ({
-    users: [],
-    activities: [],
-    analysis: [],
     healthy: [],
+    users: [],
     unhealthy: [],
-    formData: [],
-    hideForm :true,
+    table: []
   }),
   created() {
-    this.fetchUsers();
-    this.fetchActivities()
+    this.fetchUsers()
+    this.getTable()
   },
   methods: {
     fetchUsers: function () {
       axios.get("/api/users")
-          .then(res => {
-            this.users = res.data
-            this.analyze()
-          })
+          .then(res => this.users = res.data)
           .catch(() => alert("Error while fetching users"));
     },
-    fetchActivities: function () {
-      axios.get("/api/activities")
-          .then(res => {
-            this.activities = res.data
-            this.analyze()
-          })
-          .catch(() => alert("Error while fetching activities"));
-    },
-    analyze: function () {
-      this.analysis = [];
-      if (this.activities.length > 0 && this.users.length > 0) {
-        this.users.forEach(user => {
-          let activity;
-          this.activities.forEach(ac => {
-            if (ac.userId === user.id) activity = ac;
-          })
-          if (activity) {
-            const cal = this.getCalories(user.age)
-            if (cal - activity.calories <= 1500) this.healthy.push(user);
-            else this.unhealthy.push(user)
+    getTable: function () {
+      const url = `/api/analytics/table`;
+      axios.get(url)
+      .then(response => {
+        const data = response.data;
+        console.log(data)
+        const set = new Set();
+        data.forEach((item) => {
+          if(set.has(item.user_id) || item.user_id>=1000) return;
+          set.add(item.user_id)
+          if(item.healthy) {
+            this.healthy.push(item)
+          } else {
+            this.unhealthy.push(item)
           }
         })
-      }
-    },
-    getCalories: function (age){
-      if(age>15 && age<20) return 2000;
-      else if(age>20 && age<30) return 2500;
-      else if(age>30 && age<40) return 3000;
-      else if(age>40 && age<50) return 2500;
-      else if(age>50 && age<70) return 2000;
-      else return 1500;
+        for (let i = 0; i < Math.max(this.healthy.length, this.unhealthy.length); i++) {
+          this.table.push({
+            healthy: this.healthy[i],
+            unhealthy: this.unhealthy[i]
+          })
+        }
+      })
+      .catch(error => {
+        console.log(error)
+      })
+    },  
+    getUserName: function (id) {
+      return this.users.find(user => user.id === id)?.full_name
     }
   }
 });
