@@ -32,6 +32,9 @@ object HealthTrackerAPI {
         if (user != null) {
             ctx.json(user)
         }
+        else {
+            ctx.status(404)
+        }
     }
 
     fun getUserByPhoneNumber(ctx: Context)
@@ -40,6 +43,9 @@ object HealthTrackerAPI {
         if (user !=null) {
             ctx.json(user)
         }
+        else {
+            ctx.status(404)
+        }
     }
 
     fun getUserByEmail(ctx: Context)
@@ -47,7 +53,9 @@ object HealthTrackerAPI {
         val user = userDao.findByEmail(ctx.pathParam("email"))
         if (user != null) {
             ctx.json(user)
-
+        }
+        else {
+            ctx.status(404)
         }
     }
 
@@ -57,6 +65,9 @@ object HealthTrackerAPI {
         if (user != null) {
             ctx.json(user)
         }
+        else {
+            ctx.status(404)
+        }
     }
 
     fun getUsersByGender(ctx: Context)
@@ -65,6 +76,9 @@ object HealthTrackerAPI {
         if (user != null) {
             ctx.json(user)
         }
+        else {
+            ctx.status(404)
+        }
     }
 
     fun getUserByAddress(ctx: Context)
@@ -72,6 +86,9 @@ object HealthTrackerAPI {
         val user = userDao.findByAddress(ctx.pathParam("address"))
         if (user != null) {
             ctx.json(user)
+        }
+        else {
+            ctx.status(404)
         }
     }
 
@@ -85,16 +102,23 @@ object HealthTrackerAPI {
 
     fun deleteUser(ctx: Context)
     {
-        userDao.delete(ctx.pathParam("user-id").toInt())
+        var deleted = userDao.delete(ctx.pathParam("user-id").toInt())
+        if (deleted == 1) {
+            ctx.status(204)
+        }
+        else {
+            ctx.status(404)
+        }
 
     }
 
     fun updateUser(ctx: Context){
         val mapper = jacksonObjectMapper()
         val user = mapper.readValue<UserDTO>(ctx.body())
-        userDao.update(
+        var update = userDao.update(
             id = ctx.pathParam("user-id").toInt(),
             userDTO=user)
+        ctx.status(204)
     }
 
 

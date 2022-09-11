@@ -11,7 +11,7 @@ data class AnalyticsDTO(
     var heart_rate: Int,
     var healthy: Boolean,
     var description: String,
-    var created_at: DateTime
+    var created_at: DateTime?
     )
 
 /*
