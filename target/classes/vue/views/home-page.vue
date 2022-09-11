@@ -55,7 +55,7 @@ Vue.component('home-page',
     padding: 10px 15px;
     background: rgba(255, 255, 255, 0.625);
     border-radius: 12px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
@@ -81,7 +81,6 @@ Vue.component('home-page',
   .card:hover{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
-    scale: 1.01;
   }
   .button{
     /* material button sytles */

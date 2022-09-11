@@ -53,7 +53,6 @@ Vue.component("app-layout", {
   .navbar:hover{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
     transform: translateY(-3px);
-    scale: 1.01;
   }
   .a{
     height: 100%;
@@ -77,11 +76,9 @@ Vue.component("app-layout", {
   }
   .active:hover{
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    scale: 1.05;
     color: white !important;
   }
   .a:hover{
-    scale: 1.05;
     color: #007bff;
     text-decoration: none;
   }
