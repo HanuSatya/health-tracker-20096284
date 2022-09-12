@@ -129,7 +129,7 @@ Vue.component("activity-overview", {
     gap: 20px;
   }
   .activity{
-    width: 180px;
+    width: 315px !important;
     height: 200px;
   }
 </style>

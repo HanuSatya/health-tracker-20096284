@@ -31,7 +31,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="input-user-name">Height</span>
               </div>
-              <input type="text" class="form-control" v-model="formData.height" name="height" placeholder="Ex: 5.8 (in Feet's)"/>
+              <input type="number" class="form-control" v-model="formData.height" name="height" placeholder="Ex: 170 (in CM)"/>
             </div>
             <div class="input-group mb-3 ml-3">
               <div class="input-group-prepend">
@@ -45,7 +45,7 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="input-user-name">Average Sleep</span>
               </div>
-              <input type="text" class="form-control" v-model="formData.avg_sleep" name="avg_sleep" placeholder="Ex: 8 (in hrs)"/>
+              <input type="number" class="form-control" v-model="formData.avg_sleep" name="avg_sleep" placeholder="Ex: 8 (in hrs)"/>
             </div>
             <div class="input-group mb-3 ml-3">
               <div class="input-group-prepend">
@@ -84,6 +84,7 @@
             </div>
           </div>
         </div>
+        <p style="margin-left: 20px;" class="card-subtitle mb-2 text-muted">{{ list.calories_burned }}</p>
       </div>
     </div>
   </app-layout>
@@ -113,30 +114,8 @@ Vue.component("user-analytics", {
       axios.get("/api/activities")
           .then(res => {
             this.activities = res.data
-            this.analyze()
           })
           .catch(() => alert("Error while fetching activities"));
-    },
-    analyze: function () {
-      this.analysis = [];
-      if (this.activities.length > 0 && this.users.length > 0) {
-        this.users.forEach(user => {
-          let activity;
-          this.activities.forEach(ac => {
-            if (ac.userId === user.id) activity = ac;
-          })
-          if (activity) {
-            const cal = this.getCalories(user.age)
-            let ishealthy = "unhealthy";
-            if(cal-activity.calories<=1500) ishealthy = "healthy"
-            this.analysis.push(["Activity Found " + activity.description,
-              "Calories Burned " + activity.calories,
-              "Activity Duration " + activity.duration,
-              "Based on Analysis ",
-              "You are currently "+ishealthy]);
-          } else this.analysis.push(["No activities Found"])
-        })
-      }
     },
     getCalories: function (age){
       if(age>15 && age<20) return 2000;
@@ -147,6 +126,63 @@ Vue.component("user-analytics", {
       else return 1500;
     },
     addUserAnalytics: function () {
+      //form validation
+      if (this.formData.user_id == null || this.formData.user_id == "") {
+        alert("Please select a user");
+        return;
+      }
+      if (this.formData.calorie_intake == null || this.formData.calorie_intake == "" || this.formData.calorie_intake < 0) {
+        alert("Please enter calorie intake");
+        return;
+      }
+      if (this.formData.avg_sleep == null || this.formData.avg_sleep == "" || this.formData.avg_sleep < 0) {
+        alert("Please enter average sleep");
+        return;
+      }
+      if (this.formData.heart_rate == null || this.formData.heart_rate == "" || this.formData.heart_rate < 0) {
+        alert("Please enter heart rate");
+        return;
+      }
+      if (this.formData.height == null || this.formData.height == "" || this.formData.height < 0) {
+        alert("Please enter height");
+        return;
+      }
+      if (this.formData.weight == null || this.formData.weight == "" || this.formData.weight < 0) {
+        alert("Please enter weight");
+        return;
+      }
+      if(this.formData.avg_sleep<6 || this.formData.avg_sleep>10){
+        alert("Average sleep should be between 6 and 10 hours");
+        return;
+      }
+      if(this.formData.heart_rate<60 || this.formData.heart_rate>100){
+        alert("Heart rate should be between 60 and 100");
+        return;
+      }
+      if(this.formData.height<120 || this.formData.height>200){
+        alert("Height should be between 150 and 200 cm");
+        return;
+      }
+      if(this.formData.weight<40 || this.formData.weight>100){
+        alert("Weight should be between 40 and 100 kg");
+        return;
+      }
+      if(this.formData.calorie_intake>5000 || this.formData.calorie_intake<1000){
+        alert("Calorie intake should be between 1000 and 5000");
+        return;
+      }
+      try{
+        parseInt(this.formData.calorie_intake)
+        parseInt(this.formData.avg_sleep)
+        parseInt(this.formData.heart_rate)
+        parseInt(this.formData.height)
+        parseInt(this.formData.weight)
+      }
+      catch(e){
+        alert("Please enter valid values");
+        return;
+      }
+
       let description = '';
       let healthy = false;
       let remainingCalories = this.formData.calorie_intake;
@@ -252,6 +288,8 @@ Vue.component("user-analytics", {
                   created_at: created_at.millis,
                 })
             }
+            //check activies if user_id is present
+            const activity = this.activities.find(activity => activity.userId === user_id)
             this.analytics.push({
               address,
               full_name,
@@ -260,7 +298,8 @@ Vue.component("user-analytics", {
               age,
               gender,
               id,
-              analytics
+              analytics,
+              calories_burned: activity ? "Total Calories Burned: "+activity.calories : "No activity",
             });
           }
         })

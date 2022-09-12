@@ -104,6 +104,34 @@ Vue.component("user-overview", {
       }
     },
     addUser: function (){
+      //form validation
+      if (this.formData.name === undefined || this.formData.name === "") {
+        alert("Please enter a name");
+        return;
+      }
+      if (this.formData.phone === undefined || this.formData.phone === "") {
+        alert("Please enter a phone number");
+        return;
+      }
+      if (this.formData.email === undefined || this.formData.email === "") {
+        alert("Please enter an email");
+        return;
+      }
+      if (this.formData.age === undefined || this.formData.age === "") {
+        alert("Please enter an age");
+        return;
+      }
+      //email validation using regex
+      if (!this.formData.email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+        alert("Please enter a valid email");
+        return;
+      }
+      //phone validation using regex
+      if (!this.formData.phone.match(/^[0-9]{10}$/)) {
+        alert("Please enter a valid phone number");
+        return;
+      }
+      
       const url = `/api/users`;
       axios.post(url,
           {
@@ -138,7 +166,7 @@ Vue.component("user-overview", {
     gap: 20px;
   }
   .user{
-    width: 180px;
+    width: 315px !important;
     height: 200px;
   }
 </style>
