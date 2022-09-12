@@ -31,21 +31,21 @@ jobs:
       - name: Maven Verify
         run: mvn -B clean verify
 
-  deploy:
-   name: Deploying to Heroku
-   needs: test
-   runs-on: ubuntu-latest
+#   deploy:
+#    name: Deploying to Heroku
+#    needs: test
+#    runs-on: ubuntu-latest
 
-   steps:
-    - uses: actions/checkout@v2
-    - uses: AkhileshNS/heroku-deploy@v3.5.7
-      name: Deploy to Heroku
-      with:
-        # This will be used for authentication. You can find it in your heroku homepage account settings
-        heroku_api_key: 04e728ff-8680-4182-8da7-92f4838d4c30
-        # Email that you use with heroku
-        heroku_email: 20096284@mail.wit.ie
-        # The appname to use for deploying/updating
-        heroku_app_name: health-tracker-20096284
-        # A URL to which a healthcheck is performed (checks for 200 request)
-        healthcheck: https://health-tracker-20096284.herokuapp.com/
+#    steps:
+#     - uses: actions/checkout@v2
+#     - uses: AkhileshNS/heroku-deploy@v3.5.7
+#       name: Deploy to Heroku
+#       with:
+#         # This will be used for authentication. You can find it in your heroku homepage account settings
+#         heroku_api_key: 04e728ff-8680-4182-8da7-92f4838d4c30
+#         # Email that you use with heroku
+#         heroku_email: 20096284@mail.wit.ie
+#         # The appname to use for deploying/updating
+#         heroku_app_name: health-tracker-20096284
+#         # A URL to which a healthcheck is performed (checks for 200 request)
+#         healthcheck: https://health-tracker-20096284.herokuapp.com/
