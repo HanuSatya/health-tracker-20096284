@@ -21,7 +21,7 @@ class JavalinConfig {
         val herokuPort = System.getenv("PORT")
         return if (herokuPort != null) {
             Integer.parseInt(herokuPort)
-        } else 3000
+        } else 7000
     }
 
 
