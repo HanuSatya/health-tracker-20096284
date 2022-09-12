@@ -23,21 +23,21 @@ val validAddress = "Test Users address"
 
 
 val users = arrayListOf<UserDTO>(
-    UserDTO(id = 1, full_name = "Hanuma Satya Sunnam", phone_number = "7729015811", email_id = "hanuma.sathya@gmail.com", age = 23, gender = "Male", address = "Dublin,Ireland"),
-    UserDTO(id = 2, full_name = "Vamshi Krishna Sunnam", phone_number = "1234567890", email_id = "vamshi.krishna@gmail.com", age = 21, gender = "Male", address = "Hyderabad,India"),
-    UserDTO(id = 3, full_name = "Srinivasa Chary Sunnam", phone_number = "9441746363", email_id = "sunnam.chary@gmail.com", age = 54, gender = "Male", address = "Kakarla,India"),
-    UserDTO(id = 4, full_name = "Nagamani Sunnam", phone_number = "8441746363", email_id = "sunnam.nagamani@gmail.com", age = 48, gender = "Female", address = "Nandigama,India"),
-    UserDTO(id = 5, full_name = "Vontela Akanksha", phone_number = "7667045907", email_id = "vontela.akanksha@gmail.com", age = 22, gender = "Female", address = "Karimnagar,India"),
-    UserDTO(id = 6, full_name = "Ravi Teja", phone_number = "987654321", email_id = "ravi.polishetty@gmail.com", age = 23, gender = "Male", address = "Kansas,USA")
+    UserDTO(id = 1, full_name = "Hanuma Satya Sunnam1", phone_number = "72813231", email_id = "hanuma.255@gmail.com", age = 23, gender = "Male", address = "Dublin,Ireland"),
+    UserDTO(id = 2, full_name = "Vamshi Krishna Sunnam1", phone_number = "23267890", email_id = "vamshi.3454@gmail.com", age = 21, gender = "Male", address = "Hyderabad,India"),
+    UserDTO(id = 3, full_name = "Srinivasa Chary Sunnam1", phone_number = "327463633", email_id = "sunnam.234@gmail.com", age = 54, gender = "Male", address = "Kakarla,India"),
+    UserDTO(id = 4, full_name = "Nagamani Sunnam1", phone_number = "327463263", email_id = "sunnam.231@gmail.com", age = 48, gender = "Female", address = "Nandigama,India"),
+    UserDTO(id = 5, full_name = "Vontela Akanksha1", phone_number = "237045907", email_id = "vontela.542@gmail.com", age = 22, gender = "Female", address = "Karimnagar,India"),
+    UserDTO(id = 6, full_name = "Ravi Teja1", phone_number = "232343341", email_id = "ravi.123@gmail.com", age = 23, gender = "Male", address = "Kansas,USA")
 )
 
 val activities = arrayListOf<ActivityDTO>(
-    ActivityDTO(id = 1, description = "Running TEST", duration = 22.0, calories = 230, started = DateTime.now(), userId = 1),
-    ActivityDTO(id = 2, description = "Hopping", duration = 10.5, calories = 80, started = DateTime.now(), userId = 2),
-    ActivityDTO(id = 3, description = "Walking", duration = 12.0, calories = 120, started = DateTime.now(), userId = 3),
-    ActivityDTO(id = 4, description = "Swimming", duration = 11.0, calories = 150, started = DateTime.now(), userId = 1),
-    ActivityDTO(id = 5, description = "Cycling", duration = 20.0, calories = 200, started = DateTime.now(), userId = 2),
-    ActivityDTO(id = 6, description = "Jumping", duration = 10.0, calories = 170, started = DateTime.now(), userId = 4)
+    ActivityDTO(id = 1, description = "Running TEST2342", duration = 22.0, calories = 230, started = DateTime.now(), userId = 2),
+    ActivityDTO(id = 2, description = "Hopping2433", duration = 10.5, calories = 80, started = DateTime.now(), userId = 2),
+    ActivityDTO(id = 3, description = "Walking34332", duration = 12.0, calories = 120, started = DateTime.now(), userId = 3),
+    ActivityDTO(id = 4, description = "Swimming2323", duration = 11.0, calories = 150, started = DateTime.now(), userId = 2),
+    ActivityDTO(id = 5, description = "Cycling433", duration = 20.0, calories = 200, started = DateTime.now(), userId = 2),
+    ActivityDTO(id = 6, description = "Jumping2343", duration = 10.0, calories = 170, started = DateTime.now(), userId = 3)
 )
 
 fun populateUserTable(): UserDAO {

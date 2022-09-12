@@ -103,6 +103,28 @@ Vue.component("activity-profile", {
   },
   methods: {
     updateActivity: function () {
+      //actvity validation
+      if (this.activity.description == null || this.activity.description == "") {
+        alert("Please enter a description")
+        return
+      }
+      if (this.activity.duration == null || this.activity.duration == "") {
+        alert("Please enter a duration")
+        return
+      }
+      if (this.activity.calories == null || this.activity.calories == "") {
+        alert("Please enter a calories")
+        return
+      }
+      if (this.activity.started == null || this.activity.started == "") {
+        alert("Please enter a started")
+        return
+      }
+      if (this.activity.userId == null || this.activity.userId == "") {
+        alert("Please enter a userId")
+        return
+      }
+      
       const activityId = this.$javalin.pathParams["activity-id"];
       const url = `/api/activities/${activityId}`
       axios.patch(url,
@@ -113,12 +135,11 @@ Vue.component("activity-profile", {
             started:this.activity.started,
             userId:this.activity.userId
           })
-          .then(response =>
-              this.activity.push(response.data))
+          .then(response =>{
+              this.activity.push(response.data); alert("Activity updated successfully")})
           .catch(error => {
-            console.log(error)
+            alert("Error updating activity: " + error)
           })
-      alert("Activity updated!")
     },
     deleteActivity: function () {
       if (confirm("Do you really want to delete?")) {
@@ -132,6 +153,7 @@ Vue.component("activity-profile", {
             })
             .catch(function (error) {
               console.log(error)
+              alert("Error deleting activity: " + error)
             });
       }
     }

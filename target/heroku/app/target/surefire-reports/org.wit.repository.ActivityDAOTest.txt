@@ -1,4 +1,128 @@
 -------------------------------------------------------------------------------
 Test set: org.wit.repository.ActivityDAOTest
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.336 s - in org.wit.repository.ActivityDAOTest
+Tests run: 13, Failures: 1, Errors: 12, Skipped: 0, Time elapsed: 42.249 s <<< FAILURE! - in org.wit.repository.ActivityDAOTest
+multiple activities added to table can be retrieved successfully  Time elapsed: 3.566 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$CreateActivities.multiple activities added to table can be retrieved successfully(ActivityDAOTest.kt:45)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$CreateActivities.multiple activities added to table can be retrieved successfully(ActivityDAOTest.kt:45)
+
+getting all activities from a populated table returns all rows  Time elapsed: 3.42 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.getting all activities from a populated table returns all rows(ActivityDAOTest.kt:67)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.getting all activities from a populated table returns all rows(ActivityDAOTest.kt:67)
+
+get activity by user id that exists, results in a correct activitie{s} returned  Time elapsed: 3.389 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get activity by user id that exists, results in a correct activitie(s) returned(ActivityDAOTest.kt:91)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get activity by user id that exists, results in a correct activitie(s) returned(ActivityDAOTest.kt:91)
+
+get activity by activity id that exists, results in a correct activity returned  Time elapsed: 3.346 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get activity by activity id that exists, results in a correct activity returned(ActivityDAOTest.kt:132)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get activity by activity id that exists, results in a correct activity returned(ActivityDAOTest.kt:132)
+
+get activity by user id that has no activities, results in no record returned  Time elapsed: 3.485 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get activity by user id that has no activities, results in no record returned(ActivityDAOTest.kt:79)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get activity by user id that has no activities, results in no record returned(ActivityDAOTest.kt:79)
+
+get all activities over empty table returns none  Time elapsed: 1.15 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<5>
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get all activities over empty table returns none(ActivityDAOTest.kt:108)
+
+get activity by activity id that has no records, results in no record returned  Time elapsed: 3.399 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get activity by activity id that has no records, results in no record returned(ActivityDAOTest.kt:121)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$ReadActivities.get activity by activity id that has no records, results in no record returned(ActivityDAOTest.kt:121)
+
+updating existing activity in table results in successful update  Time elapsed: 3.354 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$UpdateActivities.updating existing activity in table results in successful update(ActivityDAOTest.kt:151)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$UpdateActivities.updating existing activity in table results in successful update(ActivityDAOTest.kt:151)
+
+updating non-existant activity in table results in no updates  Time elapsed: 3.335 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$UpdateActivities.updating non-existant activity in table results in no updates(ActivityDAOTest.kt:167)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$UpdateActivities.updating non-existant activity in table results in no updates(ActivityDAOTest.kt:167)
+
+deleting a non-existant activity {by id} in table results in no deletion  Time elapsed: 3.359 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$DeleteActivities.deleting a non-existant activity (by id) in table results in no deletion(ActivityDAOTest.kt:188)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$DeleteActivities.deleting a non-existant activity (by id) in table results in no deletion(ActivityDAOTest.kt:188)
+
+deleting activities when 1 or more exist for user id results in deletion  Time elapsed: 3.435 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$DeleteActivities.deleting activities when 1 or more exist for user id results in deletion(ActivityDAOTest.kt:234)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$DeleteActivities.deleting activities when 1 or more exist for user id results in deletion(ActivityDAOTest.kt:234)
+
+deleting activities when none exist for user id results in no deletion  Time elapsed: 3.47 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$DeleteActivities.deleting activities when none exist for user id results in no deletion(ActivityDAOTest.kt:219)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$DeleteActivities.deleting activities when none exist for user id results in no deletion(ActivityDAOTest.kt:219)
+
+deleting an existing activity {by id} in table results in record being deleted  Time elapsed: 3.533 s  <<< ERROR!
+org.jetbrains.exposed.exceptions.ExposedSQLException: 
+org.postgresql.util.PSQLException: ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$DeleteActivities.deleting an existing activity (by id) in table results in record being deleted(ActivityDAOTest.kt:203)
+Caused by: org.postgresql.util.PSQLException: 
+ERROR: duplicate key value violates unique constraint "users_phone_number_key"
+  Detail: Key (phone_number)=(72813231) already exists.
+	at org.wit.repository.ActivityDAOTest$DeleteActivities.deleting an existing activity (by id) in table results in record being deleted(ActivityDAOTest.kt:203)
+
