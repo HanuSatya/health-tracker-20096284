@@ -1,46 +1,51 @@
-* This is a workflow that automatically runs tests when pushing to the repo .
-* If the tests are successful , the project is deployed to Heroku .
-nare : Deploy to Heroku
-on : [ push , pull_request ]
-Jobs :
- packages
-   name : Haven Package ( no tests )
-   runs an : ubuntu - latest
-   steps :
-    - : actions / checket2
-     -name : Setup 30K 11
-      uses : actions / setup - java @ v
-      with :
- test :
-        java - version : 11
-       name : Maven Package
-       run : mvn -5 clean package -DskipTests
-   ne : Maven Tests
-   needs : package
-   runs - on : ubuntu - latest
-   steps :
-     - uses : actions / checkout @ v2
-     - : Setup 3 11
-      uses : actions / setup - javaju !
-      with :
-        java - version : 11
-     -name : Maven Verify
-      run : mvn -8 clean verify
- deploy :
-  name : Deploying to Heroku
-  ned : best
-  runs - on : ubuntu - latest
-  steps :
-   - uses : actions / checkout @ v2
-     uses :
-     nane : Deploy to Heroku
-     with :
-       * This will be used for authentication . You can find it in your heroku homepage account settings
-       herolou_api_key : f87b7572-7758-48c2-81fa - 871543922fSe
-          AldhileshNS/heroku-deploy@v3.5.7
-      # Drail that you use with heroku
-      heruku email : sdruhanit.ie
-        The apprame to use for deployimg / upchating
-      herolou_app_name : health - tracker - rest - app - stage
-       # A URL to which a healthcheck is performed ( checks for 200 request )
-      hawl the heck : https://health-tracker-rest-app-stage.herokuapp.com/
+name: Deploy to Heroku
+
+on: [push, pull_request]
+
+jobs:
+
+  package:
+    name: Maven Package (no tests) 
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Maven Package
+        run: mvn -B clean package -DskipTests
+
+  test:
+    name: Maven Tests
+    needs: package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup JDK 11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 11
+      - name: Maven Verify
+        run: mvn -B clean verify
+
+  deploy:
+   name: Deploying to Heroku
+   needs: test
+   runs-on: ubuntu-latest
+
+   steps:
+    - uses: actions/checkout@v2
+    - uses: AkhileshNS/heroku-deploy@v3.5.7
+      name: Deploy to Heroku
+      with:
+        # This will be used for authentication. You can find it in your heroku homepage account settings
+        heroku_api_key: 04e728ff-8680-4182-8da7-92f4838d4c30
+        # Email that you use with heroku
+        heroku_email: 20096284@mail.wit.ie
+        # The appname to use for deploying/updating
+        heroku_app_name: health-tracker-20096284
+        # A URL to which a healthcheck is performed (checks for 200 request)
+        healthcheck: https://health-tracker-20096284.herokuapp.com/
