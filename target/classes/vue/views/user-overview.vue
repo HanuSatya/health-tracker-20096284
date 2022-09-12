@@ -167,6 +167,6 @@ Vue.component("user-overview", {
   }
   .user{
     width: 315px !important;
-    height: 200px;
+    height: 250px;
   }
 </style>

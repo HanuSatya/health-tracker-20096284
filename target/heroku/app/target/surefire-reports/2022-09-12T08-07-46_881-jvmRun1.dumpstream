@@ -1,0 +1,89 @@
+# Created at 2022-09-12T08:11:57.716
+TestSet has not finished before stream error has appeared >> initializing exit by non-null configuration: null
+java.io.EOFException
+	at java.base/java.io.DataInputStream.readInt(DataInputStream.java:398)
+	at org.apache.maven.surefire.booter.MasterProcessCommand.decode(MasterProcessCommand.java:115)
+	at org.apache.maven.surefire.booter.CommandReader$CommandRunnable.run(CommandReader.java:391)
+	at java.base/java.lang.Thread.run(Thread.java:831)
+
+
+# Created at 2022-09-12T08:12:00.179
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$CreateUsers,multiple users added to table can be retrieved successfully,null,null,null
+
+
+# Created at 2022-09-12T08:12:00.184
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$ReadUsers,get user by age that doesn't exist\002C results in no user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:01.875
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$ReadUsers,get user by age that doesn't exist\002C results in no user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:01.878
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$ReadUsers,get user by id that doesn't exist\002C results in no user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:03.524
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$ReadUsers,get user by id that doesn't exist\002C results in no user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:03.527
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$ReadUsers,get user by phone that doesn't exist\002C results in no user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:05.005
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$ReadUsers,get user by phone that doesn't exist\002C results in no user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:05.009
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$ReadUsers,get all users over empty table returns none,null,null,null
+
+
+# Created at 2022-09-12T08:12:06.874
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$ReadUsers,get all users over empty table returns none,null,null,null
+
+
+# Created at 2022-09-12T08:12:06.877
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$ReadUsers,get user by email that doesn't exist\002C results in no user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:08.209
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$ReadUsers,get user by email that doesn't exist\002C results in no user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:08.212
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$ReadUsers,getting all users from a populated table returns all rows,null,null,null
+
+
+# Created at 2022-09-12T08:12:09.680
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$ReadUsers,getting all users from a populated table returns all rows,null,null,null
+
+
+# Created at 2022-09-12T08:12:09.684
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$ReadUsers,get user by id that exists\002C results in a correct user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:11.014
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$ReadUsers,get user by id that exists\002C results in a correct user returned,null,null,null
+
+
+# Created at 2022-09-12T08:12:11.019
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$UpdateUsers,updating existing user in table results in successful update,null,null,null
+
+
+# Created at 2022-09-12T08:12:12.606
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$UpdateUsers,updating existing user in table results in successful update,null,null,null
+
+
+# Created at 2022-09-12T08:12:12.611
+Unexpected IOException: 5,1,org.wit.repository.UserDAOTest$DeleteUsers,deleting a non-existent user in table results in no deletion,null,null,null
+
+
+# Created at 2022-09-12T08:12:14.782
+Unexpected IOException: 6,1,org.wit.repository.UserDAOTest$DeleteUsers,deleting a non-existent user in table results in no deletion,null,null,null
+
+
+# Created at 2022-09-12T08:12:14.785
+Unexpected IOException: 2,1,org.apache.maven.surefire.junitplatform.JUnitPlatformProvider,org.wit.repository.UserDAOTest,null,null,null
+
+

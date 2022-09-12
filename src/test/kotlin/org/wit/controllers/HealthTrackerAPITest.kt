@@ -178,21 +178,12 @@ class HealthTrackerAPITest {
         @Test
         fun `get all activities by user id when user and activities exists returns 200 response`() {
 
-            addActivity(activities.get(0).description, activities.get(0).duration,
-                activities.get(0).calories, activities.get(0).started, 10)
-            addActivity(activities.get(1).description, activities.get(1).duration,
-                activities.get(1).calories, activities.get(1).started, 10)
-            addActivity(activities.get(2).description, activities.get(2).duration,
-                activities.get(2).calories, activities.get(2).started, 10)
-
             //Assert and Act - retrieve the three added activities by user id
-            val response = retrieveActivitiesByUserId(10)
+            val response = retrieveActivitiesByUserId(2)
             assertEquals(200, response.status)
             val retrievedActivities = jsonToArrayWithDate(response, Array<ActivityDTO>::class.java)
             assertNotEquals(0, retrievedActivities.size)
 
-            //After - delete the added user and assert a 204 is returned (activities are cascade deleted)
-            assertEquals(204, deleteUser(10).status)
         }
 
         @Test
