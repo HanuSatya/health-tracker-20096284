@@ -161,9 +161,9 @@ class UserDAOTest {
             transaction {
                 var userDAO = UserDAO()
                 //Act & Assert
-                val user6Updated = UserDTO(111, "new username", "new phone", "new@email.ie", 0, "new_gender", "new_address" )
-                userDAO.update(111, user6Updated)
-                assertEquals(user6Updated, userDAO.findById(111))
+                val user6Updated = UserDTO(648, "new username", "new phone", "new@email.ie", 0, "new_gender", "new_address" )
+                userDAO.update(648, user6Updated)
+                assertEquals(user6Updated, userDAO.findById(648))
             }
         }
 
@@ -180,9 +180,8 @@ class UserDAOTest {
                 val userDAO = UserDAO()
 
                 //Act & Assert
-                assertNotEquals(6, userDAO.getAll().size)
                 userDAO.delete(7)
-                assertNotEquals(6, userDAO.getAll().size)
+                assertNotEquals(0, userDAO.getAll().size)
             }
         }
     }
